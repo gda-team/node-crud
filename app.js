@@ -1,11 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 
+const routes = require('./routes/contact.routes');
+
 const app = express();
 
 dotenv.config();
 
-app.use((req, res, next) => res.send('hello world'));
+app.use(routes);
 
 const PORT = process.env.PORT || 5000;
 

@@ -4,7 +4,7 @@ exports.getHomepage = (req, res, next) => {
 exports.getNewContact = (req, res, next) =>{
 	res.render('')
 }
-exports.psotNewContact = (req, res, next) =>{
+exports.postNewContact = (req, res, next) =>{
 	res.render('')
 }
 exports.getOneContact = (req, res, next) =>{

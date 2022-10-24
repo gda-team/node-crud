@@ -1,0 +1,28 @@
+{
+  "name": "crud-express",
+  "version": "1.0.0",
+  "description": "a small app in express and postgress for crud operations",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gda-team/node-crud.git"
+  },
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "author": "cedric karungu, dieume, urbain nkera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gda-team/node-crud/issues"
+  },
+  "homepage": "https://github.com/gda-team/node-crud#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}

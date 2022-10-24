@@ -3,6 +3,11 @@ const dotenv = require('dotenv');
 
 const app = express();
 
+// Use ejs engine
+
+app.set('view engine', 'ejs')
+
+
 dotenv.config();
 
 app.use((req, res, next) => res.send('hello world'));

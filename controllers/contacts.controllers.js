@@ -2,17 +2,20 @@ exports.getHomepage = (req, res, next) => {
 	res.render('index');
 };
 exports.getNewContact = (req, res, next) =>{
-	res.render('')
+	res.render('newContact')
 }
 exports.postNewContact = (req, res, next) =>{
-	res.render('')
+	res.redirect('/')
 }
 exports.getOneContact = (req, res, next) =>{
-	res.render('')
+	res.render('oneContact')
 }
 exports.deleteContact = (req, res, next) =>{
-	res.render('')
+	res.redirect('/')
 }
-exports.updateContact = (req, res, next) =>{
-	res.render('')
+exports.getUpdateContact = (req, res, next) =>{
+	res.render('updateContact')
+}
+exports.putUpdateContact = (req, res, next) =>{
+	res.redirect('/')
 }

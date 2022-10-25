@@ -4,9 +4,8 @@ const db = require('../db/index');
 
 exports.getHomepage = async (req, res, next) => {
 	try {
-		await db.query('SELECT * FROM contact').then((data) => {
+		await db.query('SELECT * FROM contact ORDER BY id').then((data) => {
 			const contacts = data.rows;
-			console.log(contacts);
 			res.render('index', { contacts });
 		});
 	} catch (err) {
@@ -18,11 +17,7 @@ exports.getHomepage = async (req, res, next) => {
 
 exports.getNewContact = async (req, res, next) => {
 	try {
-		const id = parseInt(req.params.id);
-		await db.query('SELECT * FROM contact WHERE id = $1', [id]).then((data) => {
-			const newcontact = data.rows;
-			res.render('newContact', { newcontact });
-		});
+		res.render('newContact');
 	} catch (error) {
 		console.log(error);
 	}
@@ -33,14 +28,14 @@ exports.getNewContact = async (req, res, next) => {
 exports.postNewContact = async (req, res, next) => {
 	try {
 		const { nom, prenom, email, tel, description } = req.body;
+		console.log(req.body);
 		await db
 			.query(
 				'INSERT INTO contact (nom, prenom, email, tel, description) VALUES ($1, $2, $3, $4,$5)',
 				[nom, prenom, email, tel, description]
 			)
 			.then((data) => {
-				const postNewContact = data.rows;
-				res.redirect('/', { postNewContact });
+				res.redirect('/');
 			});
 	} catch (error) {
 		console.log(error);
@@ -54,7 +49,6 @@ exports.getOneContact = async (req, res, next) => {
 		const id = parseInt(req.params.id);
 		await db.query('SELECT * FROM contact WHERE id = $1', [id]).then((data) => {
 			const contact = data.rows[0];
-			console.log(contact);
 			res.render('oneContact', { contact });
 		});
 	} catch (error) {
@@ -66,11 +60,9 @@ exports.getOneContact = async (req, res, next) => {
 
 exports.deleteContact = async (req, res, next) => {
 	try {
-		const id = parseInt(req.params.id);
+		const { id } = req.body;
 		await db.query('DELETE FROM contact WHERE id = $1', [id]).then((data) => {
-			const deleteContact = data.rows;
-			res.redirect('/', { deleteContact });
-			res.status(200).send(`User deleted with ID: ${id}`);
+			res.redirect('/');
 		});
 	} catch (error) {
 		console.log(error);
@@ -96,16 +88,15 @@ exports.getUpdateContact = async (req, res, next) => {
 exports.putUpdateContact = async (req, res, next) => {
 	try {
 		const id = parseInt(req.params.id);
+		console.log(req.body, req.params);
 		const { nom, prenom, email, tel, description } = req.body;
 		await db
 			.query(
-				'UPDATE contatc SET nom= $1, prenom= $2, email= $3, tel= $4, description=$5 WHERE id=$6',
-				[nom, prenom, email, tel, description]
+				'UPDATE contact SET nom= $1, prenom= $2, email= $3, tel= $4, description=$5 WHERE id=$6',
+				[nom, prenom, email, tel, description, id]
 			)
 			.then((data) => {
-				const UpdateContact = data.rows;
-				res.redirect('/', { UpdateContact });
-				res.status(200).send(`User modified with ID: ${id}`);
+				res.redirect('/');
 			});
 	} catch (error) {
 		console.log(error);

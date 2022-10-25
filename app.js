@@ -6,6 +6,8 @@ const routes = require('./routes/contact.routes');
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+
 // Use ejs engine
 
 app.set('view engine', 'ejs');
@@ -22,7 +24,7 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-dotenv.config();
+// dotenv.config();
 
 app.use(routes);
 

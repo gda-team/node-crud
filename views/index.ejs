@@ -4,26 +4,12 @@
 
 <ul class="list-group">
 	<li class="list-group-item bg-danger text-light">Mes contacts</li>
+	<% contacts && contacts.forEach(contact => { %>
 	<li class="list-group-item d-flex justify-content-between">
-		<h5>cedric karungu</h5>
-		<button class="btn btn-danger btn-sm">Voir plus</button>
+		<h5><%= contact.nom %> <%= contact.prenom %></h5>
+		<a class="btn btn-danger btn-sm" href="/<%= contact.id %>">Voir plus</a>
 	</li>
-	<li class="list-group-item d-flex justify-content-between">
-		<h5>cedric karungu</h5>
-		<button class="btn btn-danger btn-sm">Voir plus</button>
-	</li>
-	<li class="list-group-item d-flex justify-content-between">
-		<h5>cedric karungu</h5>
-		<button class="btn btn-danger btn-sm">Voir plus</button>
-	</li>
-	<li class="list-group-item d-flex justify-content-between">
-		<h5>cedric karungu</h5>
-		<button class="btn btn-danger btn-sm">Voir plus</button>
-	</li>
-	<li class="list-group-item d-flex justify-content-between">
-		<h5>cedric karungu</h5>
-		<button class="btn btn-danger btn-sm">Voir plus</button>
-	</li>
+	<% }) %>
 </ul>
 
 <!--  -->

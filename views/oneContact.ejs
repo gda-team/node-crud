@@ -15,7 +15,7 @@
 				<p class="text-dark"><%= contact.description %></p>
 			</div>
 			<div class="card-footer d-flex justify-content-end gap-2">
-				<form action="/" method="DELETE">
+				<form action="/delete" method="POST">
 					<input type="text" hidden name="id" value="<%= contact.id%>" />
 					<button class="btn btn-outline-danger">Supprimer</button>
 				</form>
